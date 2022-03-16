@@ -1,0 +1,38 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "protractor",
+      "fedex-protractor-custom-rules"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:protractor/recommended"
+    ],
+    "env": {
+        "browser": true,
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+      "no-console": 2, // Remember, this means error!
+      "fedex-protractor-custom-rules/missing-assertion": 2,
+      "fedex-protractor-custom-rules/no-browser-sleep-test":2,
+      "fedex-protractor-custom-rules/no-explicit-element":2,
+      "fedex-protractor-custom-rules/no-literal": 0,
+      "fedex-protractor-custom-rules/no-protractor-commands":2,
+      "fedex-protractor-custom-rules/no-implicit-wait":1
+    },
+    "overrides": [
+      {
+        "files": ["*.js"],
+        "rules": {
+          "@typescript-eslint/no-var-requires": "off",
+          "protractor/valid-locator-type": "off"
+        }
+      }
+  ]
+  }

@@ -1,0 +1,18 @@
+{
+  "id": 123,
+  "category": {
+    "id": 98379827,
+    "name": "Muffle Pom"
+  },
+  "name": "doggie",
+  "photoUrls": [
+    "www.musslepom.co.nz"
+  ],
+  "tags": [
+    {
+      "id": 387897398,
+      "name": "pommy"
+    }
+  ],
+  "status": "Available"
+}

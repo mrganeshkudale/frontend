@@ -1,0 +1,56 @@
+{
+  "name": "ui-reference",
+  "version": "1.0.0",
+  "description": "ui reference framework",
+  "main": "index.js",
+  "bin": {
+    "protractor": "bin/protractor",
+    "webdriver-manager": "bin/webdriver-manager"
+  },
+  "scripts": {
+    "preupdate-webdriver": "npm install --unsafe-perm=true --allow-root",
+    "update-webdriver": "webdriver-manager update",
+    "prestart-webdriver": "npm run update-webdriver",
+    "start-webdriver": "webdriver-manager start",
+    "test-javascript": "protractor configs/protractor-js-config.js",
+    "test-javascript-ci": "protractor configs/protractor-js-ci-config.js",
+    "test-typescript": "npx tsc && protractor dist/configs/protractor-ts-config.js",
+    "test-cucumber": "npx tsc && protractor dist/configs/protractor-ts-cucumber-config.js",
+    "test-cucumber-ci": "npx tsc && protractor dist/configs/protractor-ts-ci-cucumber-config.js",
+    "lint": "eslint . --ext .ts,.js --quiet",
+    "lint-report": "eslint . --ext .js,.ts -f json -o report.json",
+    "generate-report": "npx mochawesome-merge ./reports/*.json -o ./reports/final.json && npx marge ./reports --reportPageTitle 'Execution-report' --charts true -o ./reports",
+    "clean-reports": "node -e require('fs-extra').emptyDir('./reports');"
+  },
+  "keywords": [
+    "ui-reference"
+  ],
+  "author": "kannan",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.az.fxei.fedex.com:tnt/qcoe-petclinic-ui.git"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.21",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "cucumber": "^6.0.5",
+    "eslint": "^7.18.0",
+    "eslint-html-reporter": "^0.7.4",
+    "eslint-plugin-fedex-protractor-custom-rules": "^1.0.0",
+    "eslint-plugin-protractor": "^2.1.1",
+    "log4js": "^6.3.0",
+    "mocha": "^8.2.1",
+    "qcoe-fedex-ui-test-common": "latest",
+    "soft-assert": "^0.2.6",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": 9222968140498504000,
+  "category": {
+    "id": 67125,
+    "name": "Doemstic"
+  },
+  "name": "Doggie",
+  "photoUrls": [
+    "http://doggieshow-americas.biz/pets"
+  ],
+  "tags": [
+    {
+      "id": 82376,
+      "name": "pet"
+    }
+  ],
+  "status": "available"
+}

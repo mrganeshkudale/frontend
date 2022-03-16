@@ -1,0 +1,22 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "PUT",
+        "urlPattern": "/v2/user/.*"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+			"Content-Type": "application/json",
+			"access-control-allow-headers": "Content-Type,api_key,Authorization ",
+			"access-control-allow-methods": "GET,POST,DELETE,PUT ",
+			"access-control-allow-origin": "*",
+			"date": "Thu,06 May 2021 13:03:57 GMT", 
+			"server": "Jetty(9.2.9.v20150224) "
+        },
+        "bodyFileName" : "body-v2-pet-updateUserByUsername.json"
+      }
+    }
+  ]
+}

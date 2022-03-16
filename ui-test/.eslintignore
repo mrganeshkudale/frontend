@@ -1,0 +1,7 @@
+allure-report
+allure-results
+data
+dist
+reports
+screenshots
+node_modules

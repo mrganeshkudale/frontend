@@ -1,0 +1,18 @@
+{
+  "id": 9222968140498504000,
+  "category": {
+    "id": 0,
+    "name": "Doemstic"
+  },
+  "name": "Doggie",
+  "photoUrls": [
+    ""
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "pet"
+    }
+  ],
+  "status": "available"
+}

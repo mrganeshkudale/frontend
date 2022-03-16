@@ -1,214 +1,170 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
+# Spring Petclinic Angular [![Build Status](https://travis-ci.org/spring-petclinic/spring-petclinic-angular.png?branch=master)](https://travis-ci.org/spring-petclinic/spring-petclinic-angular/)
 
+## Angular frontend for Spring Petclinic
 
+Warning: **client only**. 
+  Use REST API from backend [spring-petclinic-rest project](https://github.com/spring-petclinic/spring-petclinic-rest)
+  You need start backend server before start frontend application.
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+## Screenshot
 
+![Screenshot of SPring Petclinic Angular](https://cloud.githubusercontent.com/assets/838318/23263243/f4509c4a-f9dd-11e6-951b-69d0ef72d8bd.png)
+  
 
+## Installation
 
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+1. Update angular-cli to latest version (8.0.3 current)
+as described on [angular-cli github readme.md](https://github.com/angular/angular-cli#updating-angular-cli)
 
-  <h3 align="center">Best-README-Template</h3>
+````
+npm uninstall -g angular-cli @angular/cli
+npm cache clean
+npm install -g @angular/cli@latest
+````
+Clone project from github
+````
+git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
+````
+Install local project package
+````
+npm install --save-dev @angular/cli@latest
+if npm version > 5.0 delete package-lock.json file  ( bug in npm 5.0 - this file prevent correct packages install)
+npm install
+````
 
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</p>
+Now project use Angular CLI v.8.0.3 and Angular v.8.0.1
+You can see current dependencies in [package.json](package.json) file.
 
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
+## Code scaffolding
 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
+## Build
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+You can also build the application in a dedicated docker image using the provided `Dockerfile` as follows:
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+```
+docker build -t spring-petclinic-angular:latest .
+```
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+Then you will be able to use it as follows:
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+```
+docker run --rm -p 8080:8080 spring-petclinic-angular:latest
+```
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+## Documentation
 
-### Built With
+The documentation of the Spring Petclinic Angular application is generated by the [compodoc](https://compodoc.app) tool.
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+Documentation URL: [https://spring-petclinic.github.io/spring-petclinic-angular/](https://spring-petclinic.github.io/spring-petclinic-angular/)
 
+Regenerate the `docs` folder with [compodoc](https://compodoc.app):
+```
+compodoc -p src/tsconfig.app.json -d docs
+```
 
+## Deploy on Web servers
 
-<!-- GETTING STARTED -->
-## Getting Started
+### Deploy on Nginx (for Nginx CentOS installation):
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+1. Build Angular application:
 
-### Prerequisites
+  ng build --prod --base-href=/petclinic/ --deploy-url=/petclinic/
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+2. Create sub-directory **/petclinic** in default nginx directory **/usr/share/nginx/html**
 
-### Installation
+3. Copy **/dist**  sub-directory from Angular appication to  **/usr/share/nginx/html/petclinic**
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
+4. Edit nginx config (nginx.conf file in /etc/nginx/ directory)
 
+```
+server {
+	listen       80 default_server;
+        root         /usr/share/nginx/html;
+        index index.html;
 
+	location /petclinic/ {
+                alias /usr/share/nginx/html/petclinic/dist/;
+                try_files $uri$args $uri$args/ /petclinic/index.html;
+        }
+}
+```
 
-<!-- USAGE EXAMPLES -->
-## Usage
+5. Reload nginx:  **nginx -s reload**
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+6. Run app in brouser:  http://server_name/petclinic/
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Deploy on Apache (for Apache CentOS installation):
 
+1. Build Angular application:
 
+ng build --prod --base-href=/petclinic/ --deploy-url=/petclinic/
 
-<!-- ROADMAP -->
-## Roadmap
+2. Create sub-directory **/petclinic** in default Apache directory **/var/www/html**
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+3. Go into Angular appication **/dist** sub-directory and copy all files and sub-dirs from it to **/var/www/html/petclinic**
 
+4. Edit Apache config (/etc/https/conf/httpd.conf):
 
+sudo vi /etc/httpd/conf/httpd.conf
 
-<!-- CONTRIBUTING -->
-## Contributing
+Find the Directory /var/www/html> section and change the AllowOverride directive from None to All:
+```
+ /etc/httpd/conf/httpd.conf
+ . . .
+  <Directory /var/www/html>
+ . . .
+ # 
+ # AllowOverride controls what directives may be placed in .htaccess files.
+ # It can be "All", "None", or any combination of the keywords:
+ # Options FileInfo AuthConfig Limit
+ #
+ AllowOverride All
+ . . .
+ </Directory>
+ . . .
+```
+5. Save and exit the file and then restart Apache to apply the change:
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+sudo systemctl restart httpd
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+6. Create a .htaccess file in the directory **/var/www/html/petclinic**
 
+sudo vi /var/www/html/petclinic/.htaccess
 
+Add the following line to the top of the file to activate the RewriteEngine, which instructs Apache to process any rules that follow:
+```
+RewriteEngine On  
+# If an existing asset or directory is requested go to it as it is
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]  
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d  
+RewriteRule ^ - [L]
 
-<!-- LICENSE -->
-## License
+# If the requested resource doesn't exist, use index.html
+RewriteRule ^ index.html  
+```
+7. Reload Apache:
 
-Distributed under the MIT License. See `LICENSE` for more information.
+sudo systemctl restart httpd
 
+8. Run app in browser: http://server_name/petclinic/
 
+## Running unit tests
 
-<!-- CONTACT -->
-## Contact
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+## Running end-to-end tests
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
 
+## Further help
 
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
-
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

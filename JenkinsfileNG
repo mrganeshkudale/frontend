@@ -1,0 +1,78 @@
+@Library('jenkins-shared-library@v1.4.0') _
+
+pipeline {
+  agent { label "linux" }
+  options {
+    timeout(time: 60, unit: 'MINUTES')
+  }
+
+  environment {
+    SQ_IGNORE_PROPERTIES_FILE="true"                                // sonarqube properties maynot be correct
+    SQ_BREAK_BUILD="false"                                          // 'false' will not break build even if sonar quality gate fails
+    BUILD_TYPE='angular'
+    AD_GROUP="azure_tnt_qcoe"
+  }
+
+  stages {
+
+    // Build Stage
+    stage("Build") {
+      steps {
+        initEnv()
+        buildApp()
+        writeDockerfile artefact: "${ARTEFACT_DIR}"                   //app image will be created based on nginx.
+        dockerBuild()
+      }
+    }
+
+    // Scan Stage
+    stage("Scan") {
+     parallel {
+      stage("Sonarqube Scan") {
+          steps {
+            sonarqubeScan()
+          }
+        }
+
+      stage("Trivy Scan of Container Image") {
+        steps {
+          trivyScan()
+        }
+      }
+
+      stage("Docker Scan by Nexus IQ") {
+        steps {
+          dockerScan()
+        }
+      }
+
+      stage("Artifact Scan by Nexus IQ") {
+        steps {
+          nexusScan artefact: "${ARTEFACT_GZIP}"
+        }
+      }
+    }
+  }
+
+  // Publish Stage
+  stage('Publish Container to Nexus Registry'){
+    steps {
+      dockerPush()
+    }
+  }
+
+stage("Deploy to Dev") {
+    when { branch 'dev' }
+      steps {
+        helmDeploy(dockerRegistry: 'fxeidocker.azurecr.io', environment: 'tnt-001-nonprod', stage: 'development')
+      }
+    }
+
+  }
+
+  post {
+    always {
+        cleanWs()
+    }
+  }
+}
